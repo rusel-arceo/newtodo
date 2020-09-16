@@ -38,6 +38,10 @@ txtInput.addEventListener('keyup', ( event) => {  // CON keyup captamos cuando u
             todoList.nuevoTodo(nuevoTodo);          
             crearTodoHtml(nuevoTodo);
             txtInput.value='';
+            
+            Todo.numPendientes++;
+            contador.innerText = `${Todo.numPendientes} pendiente(s)` ;
+            
         }
 });
 
@@ -79,13 +83,12 @@ btnEliminaCompletados.addEventListener('click', ( event ) => {
     {   
         elemento = divTodoList.children[i];
         //if(elemento.getAttribute('class')!=null)  // la clase getAttribute devuelve el valor del elemento pero si si ese aributo no existe devuelve null, hay usar los filtros ya no funciona porque pueden tener la clase hidden al estar en pendiente, lo cual lo eliminaria erroniamente
-        
+
         if(elemento.classList.contains('completed'))  // Solución del instructor, contains devuelve true si contiene el elemento y false si no lo contiene, usamos .classList para que revise en las clases, de otra forma buscará mas "arriba" en atributos y marcará error.
             divTodoList.removeChild(elemento);
        
     }
     todoList.eliminarCompletados();
-    console.log(todoList);
     
 });
 
