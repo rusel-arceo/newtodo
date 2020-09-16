@@ -78,8 +78,9 @@ btnEliminaCompletados.addEventListener('click', ( event ) => {
     for (let i = divTodoList.children.length-1; i >= 0; i--)  // con divTodoList.children obtengo ubn arreglo con los hijos del elemento (div)
     {   
         elemento = divTodoList.children[i];
-        if(elemento.getAttribute('class')!=null)  // la clase getAttribute devuelve el valor del elemento pero si si ese aributo no existe devuelve null
-        //if(elemento.classList.contains('completed'))  // Solución del instructor, contains devuelve true si contiene el elemento y false si no lo contiene, usamos .classList para que revise en las clases, de otra forma buscará mas "arriba" en atributos y marcará error.
+        //if(elemento.getAttribute('class')!=null)  // la clase getAttribute devuelve el valor del elemento pero si si ese aributo no existe devuelve null, hay usar los filtros ya no funciona porque pueden tener la clase hidden al estar en pendiente, lo cual lo eliminaria erroniamente
+        
+        if(elemento.classList.contains('completed'))  // Solución del instructor, contains devuelve true si contiene el elemento y false si no lo contiene, usamos .classList para que revise en las clases, de otra forma buscará mas "arriba" en atributos y marcará error.
             divTodoList.removeChild(elemento);
        
     }
