@@ -18,8 +18,13 @@ export class Todo{         // Exportamos a clase porque se utilizará en otra m�
         temporalTodo.completado = completado;
         temporalTodo.creado     = creado;
 
-        if(!Todo.numPendientes){Todo.numPendientes=0}; // Inicializo si no lo esta
-        
+        /* if(!Todo.numPendientes){
+            console.log("Primera inicializacion en el FROM JSON");
+            console.log(`Antes ${Todo.numPendientes}`);
+            Todo.numPendientes=0;
+            console.log(`Después ${Todo.numPendientes}`);
+        }; // Inicializo si no lo esta
+         */
         if(!completado){Todo.numPendientes++;} // Si completado el falso aumento, la negacion evita el else
         
         return temporalTodo;    

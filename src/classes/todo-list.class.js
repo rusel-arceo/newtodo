@@ -66,7 +66,7 @@ export class TodoList{
         } else{
             this.todos = [];
         } */
-        
+        Todo.numPendientes=0;
         this.todos = localStorage.getItem('todo') ? JSON.parse(localStorage.getItem('todo')) : [] ;
        
         

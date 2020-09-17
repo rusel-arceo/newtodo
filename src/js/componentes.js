@@ -59,12 +59,13 @@ divTodoList.addEventListener('click', ( event ) => {  // el divTodoList contiene
         todoElemento.classList.toggle('completed');  // classList es para acceder a todas la clases,En un metodo que alterna la clase, si existe la elimina (devuelve false) y si no existe la crea (devuelve true) puede llevar un segundo arguemento, ver documetación.
         if(todoElemento.classList.contains('completed')) // SI esta completado
         { Todo.numPendientes--; }
-        else{ Todo.numPendientes++; } 
-        console.log(`El valor de filtro antes de presonar un boton ${filtro}`);
+        else
+        { Todo.numPendientes++; } 
+        
         if(filtro!= 'Todos' && filtro!= "")
         {  todoElemento.classList.toggle('hidden');}
 
-        contador.innerText = `${Todo.numPendientes} pendiente(s)` ;
+        //contador.innerText = `${Todo.numPendientes} pendiente(s)` ;
         
         console.log(todoElemento.classList);
        
@@ -72,8 +73,13 @@ divTodoList.addEventListener('click', ( event ) => {  // el divTodoList contiene
         {
             todoList.eliminarTodo(todoId);
             //todoElemento.parentElement.removeChild(todoElemento);       llama al padre de todoElemento y elimina al hijo ( que es el mismo todoElement) pero como ya teniamos la referencia al padre con divTodoList, lo usaremos como el instructor
+           
+            if (!todoElemento.classList.contains('completed'))
+            { Todo.numPendientes--; }
+            
             divTodoList.removeChild(todoElemento); //removeChild remueve el elemento hijo pasando su referencia a traves del padre
         }
+        contador.innerText = `${Todo.numPendientes} pendiente(s)` ;
    //console.log(todoList);
 });
 
